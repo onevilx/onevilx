@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="./assets/header.svg" alt="onevilx — security researcher" width="100%">
+<img src="./assets/header.svg" alt="onevilx — the one-character patch for GHSA-g2v6-rqmx-r4w6" width="100%">
 
 <a href="https://www.onevilx.tech"><img alt="Site" src="https://img.shields.io/badge/onevilx.tech-0d1117?style=for-the-badge&logo=firefoxbrowser&logoColor=7ee787&labelColor=0d1117"></a>
 <a href="https://www.onevilx.tech/archive/"><img alt="Write-ups" src="https://img.shields.io/badge/write--ups-0d1117?style=for-the-badge&logo=hackthebox&logoColor=58a6ff&labelColor=0d1117"></a>
@@ -16,7 +16,7 @@
 Every one is published, patched and credited. Click the ID — don't take my word for it.
 
 **[`GHSA-g2v6-rqmx-r4w6`](https://github.com/vuejs/core/security/advisories/GHSA-g2v6-rqmx-r4w6)** · `@vue/server-renderer` · **High 7.2**<br>
-A bare carriage return is whitespace to a validation regex and an attribute separator to a real HTML parser. One missing character in a character class turned `v-bind` object keys into a server-side XSS sink. The patch is one character long.
+Untrusted object keys spread through `v-bind` reach the SSR attribute serializer. Its safety regex rejected tab, newline and form feed — but not carriage return, so the name split into two attributes on the way out and `onfocus` fired with no interaction. That's the diff above.
 
 **[`GHSA-87xc-4hwr-pxf6`](https://github.com/danielcompton/ip-range-check/security/advisories/GHSA-87xc-4hwr-pxf6)** · `ip-range-check` · **Moderate**<br>
 `127.1` is loopback. The parser said *unparseable*, the guard read that as *not private*, and the SSRF filter waved it through. Failing closed is a decision you have to actually make.
