@@ -1,69 +1,36 @@
 <div align="center">
 
-<img src="./assets/header.svg" alt="onevilx — the one-character patch for GHSA-g2v6-rqmx-r4w6" width="100%">
+<img src="./assets/noir.svg" alt="onevilx — security researcher" width="100%">
 
-<a href="https://www.onevilx.tech"><img alt="Site" src="https://img.shields.io/badge/onevilx.tech-0d1117?style=for-the-badge&logo=firefoxbrowser&logoColor=7ee787&labelColor=0d1117"></a>
-<a href="https://www.onevilx.tech/archive/"><img alt="Write-ups" src="https://img.shields.io/badge/write--ups-0d1117?style=for-the-badge&logo=hackthebox&logoColor=58a6ff&labelColor=0d1117"></a>
-<a href="https://app.intigriti.com/profile/onevilx"><img alt="Intigriti" src="https://img.shields.io/badge/intigriti-0d1117?style=for-the-badge&logo=intigriti&logoColor=d2a8ff&labelColor=0d1117"></a>
-<a href="https://github.com/onevilx?tab=repositories"><img alt="Repos" src="https://img.shields.io/badge/repos-0d1117?style=for-the-badge&logo=github&logoColor=e6edf3&labelColor=0d1117"></a>
+<a href="https://www.onevilx.tech"><img alt="site" src="https://img.shields.io/badge/onevilx.tech-0b0b0b?style=for-the-badge&logo=firefoxbrowser&logoColor=a8a8a8&labelColor=0b0b0b"></a>
+<a href="https://www.onevilx.tech/archive/"><img alt="write-ups" src="https://img.shields.io/badge/write--ups-0b0b0b?style=for-the-badge&logo=hackthebox&logoColor=a8a8a8&labelColor=0b0b0b"></a>
+<a href="https://app.intigriti.com/profile/onevilx"><img alt="intigriti" src="https://img.shields.io/badge/intigriti-0b0b0b?style=for-the-badge&logo=intigriti&logoColor=a8a8a8&labelColor=0b0b0b"></a>
+<a href="https://github.com/onevilx?tab=repositories"><img alt="repos" src="https://img.shields.io/badge/repos-0b0b0b?style=for-the-badge&logo=github&logoColor=a8a8a8&labelColor=0b0b0b"></a>
 
 </div>
 
----
+### Advisories
 
-## Three advisories, three small lessons
+| | | |
+|---|---|---|
+| [`GHSA-g2v6-rqmx-r4w6`](https://github.com/vuejs/core/security/advisories/GHSA-g2v6-rqmx-r4w6) | `@vue/server-renderer` | SSR XSS via a carriage return in an attribute name &nbsp;·&nbsp; **High 7.2** |
+| [`GHSA-87xc-4hwr-pxf6`](https://github.com/danielcompton/ip-range-check/security/advisories/GHSA-87xc-4hwr-pxf6) | `ip-range-check` | SSRF filter bypass with non-canonical IPv4 &nbsp;·&nbsp; **Moderate** |
+| [`GHSA-xc49-mgwh-9pjv`](https://github.com/atinux/nuxt-auth-utils/security/advisories/GHSA-xc49-mgwh-9pjv) | `nuxt-auth-utils` | OAuth `state` unvalidated in 35 of 48 providers &nbsp;·&nbsp; **Moderate** |
 
-Every one is published, patched and credited. Click the ID — don't take my word for it.
+### Write-ups
 
-**[`GHSA-g2v6-rqmx-r4w6`](https://github.com/vuejs/core/security/advisories/GHSA-g2v6-rqmx-r4w6)** · `@vue/server-renderer` · **High 7.2**<br>
-Untrusted object keys spread through `v-bind` reach the SSR attribute serializer. Its safety regex rejected tab, newline and form feed — but not carriage return, so the name split into two attributes on the way out and `onfocus` fired with no interaction. That's the diff above.
+[Vue SSR XSS](https://www.onevilx.tech/posts/vue-ssr-xss-missing-cr/) &nbsp;·&nbsp;
+[IPv4 SSRF bypass](https://www.onevilx.tech/posts/ip-range-check-ssrf-bypass/) &nbsp;·&nbsp;
+[OAuth state](https://www.onevilx.tech/posts/nuxt-auth-utils-oauth-csrf/) &nbsp;·&nbsp;
+[CORS on localhost](https://www.onevilx.tech/posts/cors-credentialed-localhost-reflection/) &nbsp;·&nbsp;
+[Intigriti BRP](https://www.onevilx.tech/posts/intigriti-brp-dom-xss/) &nbsp;·&nbsp;
+[coupon stacking](https://www.onevilx.tech/posts/intigriti-1026-coupon-stacking/) &nbsp;·&nbsp;
+[base64 SQLi](https://www.onevilx.tech/posts/intigriti-0926-sqli-base64/)
 
-**[`GHSA-87xc-4hwr-pxf6`](https://github.com/danielcompton/ip-range-check/security/advisories/GHSA-87xc-4hwr-pxf6)** · `ip-range-check` · **Moderate**<br>
-`127.1` is loopback. The parser said *unparseable*, the guard read that as *not private*, and the SSRF filter waved it through. Failing closed is a decision you have to actually make.
+### Hunting
 
-**[`GHSA-xc49-mgwh-9pjv`](https://github.com/atinux/nuxt-auth-utils/security/advisories/GHSA-xc49-mgwh-9pjv)** · `nuxt-auth-utils` · **Moderate**<br>
-35 of 48 OAuth providers never compared the returned `state` to the stored one. The 13 that did are what proved it an oversight rather than a design choice — login CSRF across the rest.
+Broken access control &nbsp;·&nbsp; OAuth and session binding &nbsp;·&nbsp; parser differentials &nbsp;·&nbsp; DOM XSS &nbsp;·&nbsp; business logic
 
----
+Burp &nbsp;·&nbsp; Python &nbsp;·&nbsp; Playwright &nbsp;·&nbsp; `ffuf` &nbsp;·&nbsp; `nuclei` &nbsp;·&nbsp; Semgrep
 
-<details>
-<summary><b>Write-ups</b> — the full technical walkthrough for each, plus challenge solves</summary>
-
-<br>
-
-**Advisories**
-- [Vue SSR XSS via a missing carriage-return check](https://www.onevilx.tech/posts/vue-ssr-xss-missing-cr/)
-- [SSRF filter bypass with abbreviated IPv4](https://www.onevilx.tech/posts/ip-range-check-ssrf-bypass/)
-- [OAuth `state` validation missing in nuxt-auth-utils](https://www.onevilx.tech/posts/nuxt-auth-utils-oauth-csrf/)
-- [Weak OAuth state in hono-oauth-providers](https://www.onevilx.tech/posts/hono-oauth-providers-weak-state/)
-- [Credentialed CORS reflection on localhost](https://www.onevilx.tech/posts/cors-credentialed-localhost-reflection/)
-
-**Challenges**
-- [Intigriti BRP — A 403 With Nothing In It](https://www.onevilx.tech/posts/intigriti-brp-dom-xss/) — a DOM-clobbering gadget that passes every check in the client source and still gets an empty 403, because the server enforces a rule the client never applies
-- [Intigriti 1026 — coupon stacking](https://www.onevilx.tech/posts/intigriti-1026-coupon-stacking/)
-- [Intigriti 0926 — base64 SQLi](https://www.onevilx.tech/posts/intigriti-0926-sqli-base64/)
-
-</details>
-
----
-
-## What I go looking for
-
-```text
-authorization    broken object/tenant boundaries, role confusion, the 10th endpoint
-                 that forgot the check the other 9 remembered
-identity         OAuth state and PKCE binding, session fixation, reset-token scoping
-parsers          validate-here / use-there differentials — regex vs spec, client vs server
-client-side      DOM clobbering, postMessage, sanitizer bypasses, gadget hunting
-logic            races, ordering, negative quantities, anything priced in a request body
-```
-
-Burp, Python, Playwright, `ffuf`, `nuclei`, Semgrep — and mostly just reading other people's source code until the shortcut shows up.
-
-Software engineering at **1337 / 42 Network**. Morocco.
-
----
-
-<div align="center">
-<sub>Private-program findings stay private. Everything linked here is public, disclosed, or mine.</sub>
-</div>
+Software engineering at **1337 / 42 Network**.
