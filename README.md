@@ -27,7 +27,7 @@ Whatever I'm allowed to publish, I publish — the advisories above, and the cha
 [CORS on localhost](https://www.onevilx.tech/posts/cors-credentialed-localhost-reflection/) &nbsp;·&nbsp;
 [Intigriti BRP](https://www.onevilx.tech/posts/intigriti-brp-dom-xss/) &nbsp;·&nbsp;
 [Darkly v2](https://www.onevilx.tech/posts/darkly-web-security-42/) &nbsp;·&nbsp;
-[HTB Sitelytic — SSRF to Redis RCE](https://www.onevilx.tech/posts/sitelytic/)
+[SSRF to Redis RCE](https://www.onevilx.tech/posts/sitelytic/)
 
 ### How I hunt
 
