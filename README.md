@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="./assets/noir.svg" alt="onevilx — security researcher" width="100%">
+<img src="./assets/banner.gif" alt="onevilx — security researcher" width="100%">
 
 <a href="https://www.onevilx.tech"><img alt="site" src="https://img.shields.io/badge/onevilx.tech-0b0b0b?style=for-the-badge&logo=firefoxbrowser&logoColor=a8a8a8&labelColor=0b0b0b"></a>
 <a href="https://www.onevilx.tech/archive/"><img alt="write-ups" src="https://img.shields.io/badge/write--ups-0b0b0b?style=for-the-badge&logo=hackthebox&logoColor=a8a8a8&labelColor=0b0b0b"></a>
