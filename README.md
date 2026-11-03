@@ -19,6 +19,8 @@
 
 ### Write-ups
 
+Whatever I'm allowed to publish, I publish — the advisories above, and the challenges I solve for the fun of it.
+
 [Vue SSR XSS](https://www.onevilx.tech/posts/vue-ssr-xss-missing-cr/) &nbsp;·&nbsp;
 [IPv4 SSRF bypass](https://www.onevilx.tech/posts/ip-range-check-ssrf-bypass/) &nbsp;·&nbsp;
 [OAuth state](https://www.onevilx.tech/posts/nuxt-auth-utils-oauth-csrf/) &nbsp;·&nbsp;
@@ -27,10 +29,12 @@
 [coupon stacking](https://www.onevilx.tech/posts/intigriti-1026-coupon-stacking/) &nbsp;·&nbsp;
 [base64 SQLi](https://www.onevilx.tech/posts/intigriti-0926-sqli-base64/)
 
-### Hunting
+### How I hunt
 
-Broken access control &nbsp;·&nbsp; OAuth and session binding &nbsp;·&nbsp; parser differentials &nbsp;·&nbsp; DOM XSS &nbsp;·&nbsp; business logic
+I go looking for the check that one endpoint forgot — broken access control, OAuth and session binding, parser differentials, DOM XSS, and the kind of logic that only breaks when you do things out of order.
 
-Burp &nbsp;·&nbsp; Python &nbsp;·&nbsp; Playwright &nbsp;·&nbsp; `ffuf` &nbsp;·&nbsp; `nuclei` &nbsp;·&nbsp; Semgrep
+Burp, Python and Playwright carry most of it. `ffuf`, `nuclei` and Semgrep when they earn their place. The rest is reading someone else's source code until a shortcut shows itself.
 
-Software engineering at **1337 / 42 Network**.
+### Elsewhere
+
+Studying software engineering at **1337 / 42 Network**, in Casablanca.
