@@ -26,14 +26,14 @@ Whatever I'm allowed to publish, I publish — the advisories above, and the cha
 [OAuth state](https://www.onevilx.tech/posts/nuxt-auth-utils-oauth-csrf/) &nbsp;·&nbsp;
 [CORS on localhost](https://www.onevilx.tech/posts/cors-credentialed-localhost-reflection/) &nbsp;·&nbsp;
 [Intigriti BRP](https://www.onevilx.tech/posts/intigriti-brp-dom-xss/) &nbsp;·&nbsp;
-[coupon stacking](https://www.onevilx.tech/posts/intigriti-1026-coupon-stacking/) &nbsp;·&nbsp;
-[base64 SQLi](https://www.onevilx.tech/posts/intigriti-0926-sqli-base64/)
+[Darkly v2](https://www.onevilx.tech/posts/darkly-web-security-42/) &nbsp;·&nbsp;
+[HTB Sitelytic — SSRF to Redis RCE](https://www.onevilx.tech/posts/sitelytic/)
 
 ### How I hunt
 
 I go looking for the check that one endpoint forgot — broken access control, OAuth and session binding, parser differentials, DOM XSS, and the kind of logic that only breaks when you do things out of order.
 
-Burp, Python and Playwright carry most of it. `ffuf`, `nuclei` and Semgrep when they earn their place. The rest is reading someone else's source code until a shortcut shows itself.
+Burp, Python and Playwright carry most of it. `ffuf` and `nuclei` when they earn their place. The rest is reading someone else's source code until a shortcut shows itself.
 
 ### Elsewhere
 
